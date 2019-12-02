@@ -1,0 +1,51 @@
+﻿
+<!--
+This resource dictionary is used by the MetaMaker User Control.    
+-->    
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:Utilities.wpf.ViewModels"
+                    xmlns:vw="clr-namespace:Utilities.wpf.Views"
+                    xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase">
+
+    
+    <!--
+    This template applies styles to the MetaSourceFields
+    in the MetaMakerView user control.
+    -->
+    <DataTemplate x:Key="MetaSourceFieldsTemplate">
+        <Label Content="{Binding FieldName}" 
+               FontSize="14"/>
+    </DataTemplate>
+    
+    
+    <!--
+    This template applies styles to the MetaSourceData
+    field values in the MetaMakerUser control.
+    -->
+    <DataTemplate x:Key="MetaSourceDataTemplate">
+        <Label Content="{Binding FieldValue}" 
+                   FontSize="14"/>
+    </DataTemplate>
+    
+    <!--
+    This template applies styles to Validation message.
+    -->
+    <DataTemplate x:Key="ValidationMessage">
+        <Label Content="{Binding ElementName=NewValueTextBox, Path=(Validation.Errors).CurrentItem.ErrorContent}"
+            FontSize="10" Foreground="Red" FontWeight="Bold" FontStyle="Italic" />
+    </DataTemplate>
+
+    <!--
+    This CollectionViewSource is an experiment into views.
+    -->
+    <CollectionViewSource x:Key="MetaSourceDataView"
+                              Source="{Binding Path=MetaSourceData, Mode=TwoWay}">
+        <CollectionViewSource.SortDescriptions>
+            <scm:SortDescription PropertyName="FieldValue" Direction="Ascending" />
+        </CollectionViewSource.SortDescriptions>
+    </CollectionViewSource>
+
+
+
+</ResourceDictionary>

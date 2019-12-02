@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="Utilities.wpf.ViewModels.MetaDataListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:Utilities.wpf.ViewModels"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <vm:MetaDataListViewModel x:Key="MetaDataListVM" />
+    </UserControl.Resources>
+
+    <UserControl.DataContext>
+        <Binding Source="{StaticResource MetaDataListVM}" />
+    </UserControl.DataContext>
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="187*"/>
+            <RowDefinition Height="49*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Select Table:" HorizontalAlignment="Left" Margin="20,21,0,0" Grid.Row="1" VerticalAlignment="Top" Width="83"/>
+
+        <ComboBox Name="TableNamesComboBox"
+                  ItemsSource="{Binding Path=TableNames}"
+                  DisplayMemberPath="SourceTableName"
+                  SelectedValue="{Binding Path=SelectedTableName, Mode=TwoWay}"
+                  HorizontalAlignment="Left" Margin="108,21,0,0" Grid.Row="1" VerticalAlignment="Top" Width="155"/>
+        <Label Content="Select Field:" HorizontalAlignment="Left" Margin="378,21,0,0" Grid.Row="1" VerticalAlignment="Top" Width="86.347"/>
+        <ComboBox Name="MetaSourceFieldsComboBox"
+                  ItemsSource="{Binding MetaSourceFields}"
+                  DisplayMemberPath="FieldName"
+                  SelectedValuePath="FieldName"
+                  SelectedIndex="1"
+                  HorizontalAlignment="Left" Margin="464.347,25,0,0" Grid.Row="1" VerticalAlignment="Top" Width="145"/>
+        <Button 
+            Name="GetMetaSourceFieldsButton"
+            Content="Get Meta Source Fields" 
+            Command="{Binding Path=TableNameChangedCommand}"
+            HorizontalAlignment="Left" 
+            Margin="108,38,0,0" Grid.Row="3" 
+            VerticalAlignment="Top" Width="155"/>
+
+
+    </Grid>
+
+</UserControl>

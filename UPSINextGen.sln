@@ -1,0 +1,147 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPSI.wpf", "UPSI.wpf\UPSI.wpf.csproj", "{36232094-68B3-48BF-85BC-DA73BF28519B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPSI.BL", "UPSI.BL\UPSI.BL.csproj", "{EA86BD69-7B28-43ED-A71C-B7DCECC01C0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Common", "Core.Common\Core.Common.csproj", "{EBA3974C-4F79-47E8-B781-80876CFBAEFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities.BL", "Utilities\Utilities.BL.csproj", "{F5FF94AA-5190-4A0A-B73F-92EAB1CFCC74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities.wpf", "Utilities.wpf\Utilities.wpf.csproj", "{71792C96-8C10-4A1F-85A1-CAEC5BA87282}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{7F79B122-186E-4ECC-9672-918A94DF4123}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPSI.BLTest", "UPSI.BLTest\UPSI.BLTest.csproj", "{B65A011F-AEC3-476B-861C-8520C68CFFB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.CommonTest", "Core.CommonTest\Core.CommonTest.csproj", "{7E5C5240-2FCD-4022-B521-FD0F3BD9E50B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repositories", "Repositories", "{33CB01B2-AD2D-45FB-84B2-E27D62D52F1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories.SQL", "Repositories.SQL\Repositories.SQL.csproj", "{4E67AFB8-3F44-4568-8167-FE1B9CBC27B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities.DL", "Utilities.DL\Utilities.DL.csproj", "{B1CBD2F5-1AF1-49FE-ACB2-53D2A101A3DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities.DLTest", "Utilities.DLTest\Utilities.DLTest.csproj", "{2A4877A1-A84B-4DA7-AF6C-835D7BF01CE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities.BLTest", "Utilities.BLTest\Utilities.BLTest.csproj", "{98C11182-8F36-4600-A5C4-48B56569A5E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities.wpfTest", "Utilities.wpfTest\Utilities.wpfTest.csproj", "{D7490885-9243-419F-87C5-BA4302BAC1D0}"
+EndProject
+Global
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36232094-68B3-48BF-85BC-DA73BF28519B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36232094-68B3-48BF-85BC-DA73BF28519B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36232094-68B3-48BF-85BC-DA73BF28519B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA86BD69-7B28-43ED-A71C-B7DCECC01C0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA86BD69-7B28-43ED-A71C-B7DCECC01C0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA86BD69-7B28-43ED-A71C-B7DCECC01C0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBA3974C-4F79-47E8-B781-80876CFBAEFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBA3974C-4F79-47E8-B781-80876CFBAEFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBA3974C-4F79-47E8-B781-80876CFBAEFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBA3974C-4F79-47E8-B781-80876CFBAEFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5FF94AA-5190-4A0A-B73F-92EAB1CFCC74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5FF94AA-5190-4A0A-B73F-92EAB1CFCC74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5FF94AA-5190-4A0A-B73F-92EAB1CFCC74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5FF94AA-5190-4A0A-B73F-92EAB1CFCC74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71792C96-8C10-4A1F-85A1-CAEC5BA87282}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71792C96-8C10-4A1F-85A1-CAEC5BA87282}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71792C96-8C10-4A1F-85A1-CAEC5BA87282}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71792C96-8C10-4A1F-85A1-CAEC5BA87282}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B65A011F-AEC3-476B-861C-8520C68CFFB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B65A011F-AEC3-476B-861C-8520C68CFFB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B65A011F-AEC3-476B-861C-8520C68CFFB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E5C5240-2FCD-4022-B521-FD0F3BD9E50B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E5C5240-2FCD-4022-B521-FD0F3BD9E50B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E5C5240-2FCD-4022-B521-FD0F3BD9E50B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E5C5240-2FCD-4022-B521-FD0F3BD9E50B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E67AFB8-3F44-4568-8167-FE1B9CBC27B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E67AFB8-3F44-4568-8167-FE1B9CBC27B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E67AFB8-3F44-4568-8167-FE1B9CBC27B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1CBD2F5-1AF1-49FE-ACB2-53D2A101A3DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1CBD2F5-1AF1-49FE-ACB2-53D2A101A3DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1CBD2F5-1AF1-49FE-ACB2-53D2A101A3DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1CBD2F5-1AF1-49FE-ACB2-53D2A101A3DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A4877A1-A84B-4DA7-AF6C-835D7BF01CE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A4877A1-A84B-4DA7-AF6C-835D7BF01CE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A4877A1-A84B-4DA7-AF6C-835D7BF01CE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A4877A1-A84B-4DA7-AF6C-835D7BF01CE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98C11182-8F36-4600-A5C4-48B56569A5E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98C11182-8F36-4600-A5C4-48B56569A5E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98C11182-8F36-4600-A5C4-48B56569A5E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98C11182-8F36-4600-A5C4-48B56569A5E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7490885-9243-419F-87C5-BA4302BAC1D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7490885-9243-419F-87C5-BA4302BAC1D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7490885-9243-419F-87C5-BA4302BAC1D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7490885-9243-419F-87C5-BA4302BAC1D0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B65A011F-AEC3-476B-861C-8520C68CFFB4} = {7F79B122-186E-4ECC-9672-918A94DF4123}
+		{7E5C5240-2FCD-4022-B521-FD0F3BD9E50B} = {7F79B122-186E-4ECC-9672-918A94DF4123}
+		{4E67AFB8-3F44-4568-8167-FE1B9CBC27B2} = {33CB01B2-AD2D-45FB-84B2-E27D62D52F1A}
+		{2A4877A1-A84B-4DA7-AF6C-835D7BF01CE7} = {7F79B122-186E-4ECC-9672-918A94DF4123}
+		{98C11182-8F36-4600-A5C4-48B56569A5E0} = {7F79B122-186E-4ECC-9672-918A94DF4123}
+		{D7490885-9243-419F-87C5-BA4302BAC1D0} = {7F79B122-186E-4ECC-9672-918A94DF4123}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 13
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://webdevaddiction.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Core.Common\\Core.Common.csproj
+		SccProjectName1 = Core.Common
+		SccLocalPath1 = Core.Common
+		SccProjectUniqueName2 = Core.CommonTest\\Core.CommonTest.csproj
+		SccProjectTopLevelParentUniqueName2 = UPSINextGen.sln
+		SccProjectName2 = Core.CommonTest
+		SccLocalPath2 = Core.CommonTest
+		SccProjectUniqueName3 = Repositories.SQL\\Repositories.SQL.csproj
+		SccProjectTopLevelParentUniqueName3 = UPSINextGen.sln
+		SccProjectName3 = Repositories.SQL
+		SccLocalPath3 = Repositories.SQL
+		SccProjectUniqueName4 = UPSI.BL\\UPSI.BL.csproj
+		SccProjectName4 = UPSI.BL
+		SccLocalPath4 = UPSI.BL
+		SccProjectUniqueName5 = UPSI.BLTest\\UPSI.BLTest.csproj
+		SccProjectTopLevelParentUniqueName5 = UPSINextGen.sln
+		SccProjectName5 = UPSI.BLTest
+		SccLocalPath5 = UPSI.BLTest
+		SccProjectUniqueName6 = UPSI.wpf\\UPSI.wpf.csproj
+		SccProjectName6 = UPSI.wpf
+		SccLocalPath6 = UPSI.wpf
+		SccProjectUniqueName7 = Utilities.DL\\Utilities.DL.csproj
+		SccProjectName7 = Utilities.DL
+		SccLocalPath7 = Utilities.DL
+		SccProjectUniqueName8 = Utilities.wpf\\Utilities.wpf.csproj
+		SccProjectName8 = Utilities.wpf
+		SccLocalPath8 = Utilities.wpf
+		SccProjectUniqueName9 = Utilities\\Utilities.BL.csproj
+		SccProjectName9 = Utilities
+		SccLocalPath9 = Utilities
+		SccProjectUniqueName10 = Utilities.DLTest\\Utilities.DLTest.csproj
+		SccProjectTopLevelParentUniqueName10 = UPSINextGen.sln
+		SccProjectName10 = Utilities.DLTest
+		SccLocalPath10 = Utilities.DLTest
+		SccProjectUniqueName11 = Utilities.BLTest\\Utilities.BLTest.csproj
+		SccProjectTopLevelParentUniqueName11 = UPSINextGen.sln
+		SccProjectName11 = Utilities.BLTest
+		SccLocalPath11 = Utilities.BLTest
+		SccProjectUniqueName12 = Utilities.wpfTest\\Utilities.wpfTest.csproj
+		SccProjectTopLevelParentUniqueName12 = UPSINextGen.sln
+		SccProjectName12 = Utilities.wpfTest
+		SccLocalPath12 = Utilities.wpfTest
+	EndGlobalSection
+EndGlobal

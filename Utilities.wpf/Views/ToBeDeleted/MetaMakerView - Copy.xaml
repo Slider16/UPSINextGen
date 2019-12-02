@@ -1,0 +1,193 @@
+﻿<UserControl x:Class="Utilities.wpf.Views.MetaMakerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:Utilities.wpf.ViewModels"
+             xmlns:uc ="clr-namespace:Utilities.wpf.Views"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ResourceDictionary Source="/Resources/MetaMakerResources.xaml"/>
+    </UserControl.Resources>
+
+    <UserControl.DataContext>
+        <vm:MetaMakerViewModel/>
+    </UserControl.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition  />
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition />
+         </Grid.ColumnDefinitions>
+
+        <ComboBox Name="TableNamesComboBox"  Grid.Row="0" Grid.ColumnSpan="3"
+                  ItemsSource="{Binding TableNames}"
+                  SelectedItem="{Binding SelectedTable, Mode=TwoWay}"
+                  SelectedIndex="0"
+                  DisplayMemberPath="DisplayName"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Grid.ColumnSpan="3">
+            <Label Margin="4,4,0,4" Content="There are " FontSize="14" Foreground="Wheat"/>
+            <Label Margin="0,4,4,4" Content="{Binding ElementName=MetaSourceDataListBox, Path=Items.Count}" FontSize="14" Foreground="Wheat" />
+            <Label Margin="0,4,4,4" Content=" distinct values." FontSize="14" Foreground="Wheat"/>
+
+        </StackPanel>
+        
+        <Grid Grid.ColumnSpan="3" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+          <ListView Name="MetaSourceFieldsListView"
+                      ItemsSource="{Binding MetaSourceFields}" 
+                      SelectedItem="{Binding SelectedField, Mode=TwoWay, IsAsync=True}"
+                      ItemTemplate="{StaticResource MetaSourceFieldsTemplate}"
+                      SelectionMode="Single"
+                      Width="125"
+                      Margin="3"
+                      HorizontalAlignment="Left">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="RenderTransformOrigin" Value="0, 0.5"/>
+                        <Setter Property="RenderTransform">
+                            <Setter.Value>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                To="1.25" Duration="0:0:0.2"/>
+                                            <DoubleAnimation
+                                                Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                To="1.25" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                To="1" Duration="0:0:0.2"/>
+                                            <DoubleAnimation
+                                                Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                To="1" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListView.ItemContainerStyle>                
+            </ListView>          
+
+            <Grid Grid.Column="1" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <ListView Grid.ColumnSpan="2"
+                          Name="MetaSourceDataListBox"
+                          ItemsSource="{Binding MetaSourceData}"
+                          ItemTemplate="{StaticResource MetaSourceDataTemplate}"
+                          ScrollViewer.VerticalScrollBarVisibility="Auto"
+                          MouseDoubleClick="MetaSourceDataListBox_MouseDoubleClick"
+                          Margin="3,3,10,3">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="RenderTransformOrigin" Value="0, 0.5"/>
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                    To="1.25" Duration="0:0:0.2"/>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                    To="1.25" Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                    To="1" Duration="0:0:0.2"/>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                    To="1" Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+                       
+                <Grid x:Name="metaMatcherGrid" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition x:Name="metaMatcherColumn"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RenderTransform>
+                        <TranslateTransform 
+                            x:Name="metaMatcherTransform" />
+                    </Grid.RenderTransform>
+                    
+                    <GridSplitter Grid.Column="1"
+                        Width="5" Background="Blue"
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Left"
+                        Margin="3"
+                        MouseDoubleClick="GridSplitter_MouseDoubleClick"/>
+
+                    <StackPanel Grid.Column="1"
+                                Background="Black"
+                                Margin="10">
+                        <Label Foreground="Yellow" Content="Meta Matcher Area" 
+                               FontFamily="Calibri" 
+                               FontSize="14"
+                               HorizontalAlignment="Right"/>
+
+                        <TextBox Text="{Binding SelectedItem.FieldValue, ElementName=MetaSourceDataListBox}"></TextBox>
+                        
+                    </StackPanel>
+                
+                </Grid>
+            </Grid>
+            
+            
+        </Grid>
+        
+        <StackPanel Grid.Row="3" Grid.ColumnSpan="3" Margin="5">
+            <uc:DynamicGrid x:Name="ucDynamicGrid"/>
+        </StackPanel>
+        
+    </Grid>
+
+</UserControl>

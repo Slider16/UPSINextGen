@@ -1,0 +1,320 @@
+﻿<UserControl x:Class="Utilities.wpf.Views.MetaMakerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:Utilities.wpf.ViewModels"
+             xmlns:uc ="clr-namespace:Utilities.wpf.Views"
+             xmlns:dl ="clr-namespace:Utilities.DL.EventArguments;assembly=Utilities.DL"
+             mc:Ignorable="d">
+
+    <!--
+    The data context for this view is set to the MetaMakerViewModel
+    through the MainWindowResources.xaml file.  The resource file
+    referenced just below here is used, at this time, for formatting
+    of Label fonts, font sizes, etc.
+    -->
+    <UserControl.Resources>
+        <ResourceDictionary Source="/Resources/MetaMakerResources.xaml"/>
+    
+
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition  />
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <ComboBox Name="TableNamesComboBox"  Grid.Row="0" Grid.ColumnSpan="2"
+                  ItemsSource="{Binding TableNames, Mode=TwoWay}"
+                  SelectedItem="{Binding SelectedTable}"
+                  SelectedIndex="0"
+                  DisplayMemberPath="DisplayName" FontWeight="Bold"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Grid.ColumnSpan="2">
+            <Label Margin="4,4,0,4" Content="There are " FontSize="14" Foreground="Wheat"/>
+            <Label Margin="0,4,4,4" Content="{Binding ElementName=MetaSourceDataListView, Path=Items.Count}" FontSize="14" Foreground="Wheat" />
+            <Label Margin="0,4,4,4" Content=" distinct values." FontSize="14" Foreground="Wheat"/>
+
+        </StackPanel>
+
+        <ListView Name="MetaSourceFieldsListView" Grid.Row="2"
+                      ItemsSource="{Binding MetaSourceFields, Mode=TwoWay}" 
+                      SelectedItem="{Binding SelectedField}"
+                      ItemTemplate="{StaticResource MetaSourceFieldsTemplate}"
+                      SelectionMode="Single"
+                      HorizontalAlignment="Left"
+                      Width="125">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="RenderTransformOrigin" Value="0, 0.5"/>
+                    <Setter Property="RenderTransform">
+                        <Setter.Value>
+                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                                Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                To="1.25" Duration="0:0:0.2"/>
+                                        <DoubleAnimation
+                                                Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                To="1.25" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                                Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                To="1" Duration="0:0:0.2"/>
+                                        <DoubleAnimation
+                                                Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                To="1" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+
+        <!--ItemsSource="{Binding MetaSourceData, Mode=TwoWay}"-->        
+        <ListView Grid.Row="2"
+                  Grid.Column="1"
+                  Name="MetaSourceDataListView"
+                  DataContext="{StaticResource MetaSourceDataView}"
+                  ItemsSource="{Binding}"
+                  SelectedItem="{Binding SelectedFieldValue}"
+                  ItemTemplate="{StaticResource MetaSourceDataTemplate}"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  MouseDoubleClick="MetaSourceDataListView_MouseDoubleClick" 
+                  SelectionChanged="MetaSourceDataListView_SelectionChanged">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="RenderTransformOrigin" Value="0, 0.5"/>
+                    <Setter Property="RenderTransform">
+                        <Setter.Value>
+                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                            To="1.25" Duration="0:0:0.2"/>
+                                        <DoubleAnimation
+                                            Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                            To="1.25" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                            To="1" Duration="0:0:0.2"/>
+                                        <DoubleAnimation
+                                            Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                            To="1" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+
+        <Grid x:Name="metaMatcherGrid" Grid.Row="2" Grid.Column="1" 
+              Margin="5" HorizontalAlignment="Right">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="metaMatcherColumn" Width="400"/>
+                <ColumnDefinition x:Name="metaMatcherColumn2" Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RenderTransform>
+                <TranslateTransform x:Name="metaMatcherTransform" />
+            </Grid.RenderTransform>
+
+
+
+            <Grid Background="Bisque"  Margin="10,10,18,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="27*"/>
+                    <ColumnDefinition Width="73*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- 01/23/2016 Testing this along with using 
+                    IDataErrorInfo interface in my MetaDataRule model.-->
+                <Grid.Resources>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Style.Triggers>
+                            <!--- Trigger to set the ToolTip to inform about the error -->
+                            <Trigger Property="Validation.HasError" Value="True">
+                                <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                                                                        Path=(Validation.Errors)[0].ErrorContent}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                        <Setter Property="Validation.ErrorTemplate">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <DockPanel DockPanel.Dock="Right">
+                                        <AdornedElementPlaceholder>
+                                            <Border BorderBrush="Red" BorderThickness="2"/>
+                                        </AdornedElementPlaceholder>
+                                        <TextBlock Margin="3" Text="*" Foreground="Red"
+                                                   ToolTip="{Binding Path=AdornedElement.ToolTip, 
+                                                                RelativeSource={RelativeSource Mode=FindAncestor,
+                                                                     AncestorType={x:Type Adorner}}}"/>
+                                    </DockPanel>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+
+                </Grid.Resources>
+
+                <Label Content="META MATCH RULE CREATOR" 
+                       FontFamily="Calibri" 
+                       FontSize="16" 
+                       FontWeight="Medium"  
+                       HorizontalAlignment="Center" 
+                       Grid.Column="1" Margin="36,0" Width="200" Background="#FF688DCD"/>
+
+                <!--<Label Content="Old Value:" Margin="12,10" Grid.Row="1"/>-->
+                <Label x:Name="OldValueDisplayLabel"
+                       Grid.Row="1" Grid.ColumnSpan="2"                       
+                       FontFamily="Calibri"
+                       Margin="12,10">
+                    <Label.Style>
+                        <Style TargetType="{x:Type Label}">
+                            <Setter Property="Background" Value="Bisque"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsReadOnly, ElementName=MetaSourceDataListView}" />
+                            </Style.Triggers>
+                        </Style>
+                    </Label.Style>
+                    
+                </Label>
+                    
+                <Label Content="New Value:" Margin="12,4" Grid.Row="2"/>
+
+                <StackPanel Grid.Row="2" Grid.Column="1">
+                    <TextBox x:Name="NewValueTextBox" 
+                             Grid.Row="2" Grid.Column="1" 
+                             Height="25" Margin="12,0"
+                             Text="{Binding Path=MetaDataRule.NewValue, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                    <Label x:Name="ValidationMessage"
+                             Grid.Row="2" Grid.Column="1"
+                             Margin="2,0,2,0"
+                             ContentTemplate="{StaticResource ValidationMessage}"
+                             Foreground="{StaticResource DefaultBackground}"/>
+                </StackPanel>
+                <Button x:Name="CreateRuleButton" 
+                        Content="_Create Rule" 
+                        Grid.Column="1" 
+                        Margin="185,0,0,0" 
+                        Grid.Row="3" 
+                        VerticalAlignment="Top" 
+                        Width="75"
+                        CommandParameter="{Binding ElementName=MetaSourceDataListView, Path=SelectedItems}"
+                        Command="{Binding Path=SaveCommand}" 
+                        Height="22" IsDefault="True" />        
+                
+                        <!--MouseDoubleClick="{Binding AutoEnterCommand}"-->
+                        <!--MouseDoubleClick="{Binding AutoEnterCommand}"-->
+                        <!--MouseDoubleClick="{Binding AutoEnterCommand}"-->
+                <StackPanel 
+                    Grid.Row="4" 
+                    Grid.ColumnSpan="2"
+                    Margin="2"
+                    Orientation="Vertical"
+                    >
+                    <Label 
+                        Name="ValueLabel"
+                        FontSize="11"
+                        Content="[value] = New value to store in field."/>
+                    <Label
+                        Name="BlankFieldLabel"
+                        FontSize="11" 
+                        Content="Delete = Blank the field." />
+                    <Label
+                        Name="ArchiveLabel"
+                        FontSize="11"
+                        Content="Archive = Move value to comments and blank the field." />
+                </StackPanel>
+
+                <!--<ListView
+                    Grid.Row="4"
+                    Grid.ColumnSpan="2"
+                    Margin="5,30,10,10"
+                    Background="Bisque"
+                    FontSize="11" BorderBrush="Transparent">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <EventSetter Event="MouseDoubleClick" Handler="{Binding Path=AutoEnterCommand}"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="2">
+                                <Grid.InputBindings>
+                                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding AutoEnterCommand}" />
+                                </Grid.InputBindings>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />                      
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Text="My Test Row"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListViewItem>[value] = Actual value to store in field.</ListViewItem>
+                    <ListViewItem>Delete = Blank the field.</ListViewItem>
+                    <ListViewItem>Archive = Move value to comments and blank the field.</ListViewItem>--><!--
+                </ListView>-->                
+            </Grid>
+
+
+            <GridSplitter HorizontalAlignment="Left" Grid.Column="0"
+                          Width="5"
+                          Background="Red"
+                          MouseDoubleClick="GridSplitter_MouseDoubleClick"/>
+        </Grid>
+
+        <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Margin="5">
+            <uc:DynamicGrid x:Name="ucDynamicGrid"/>
+        </StackPanel>
+
+    </Grid>
+
+</UserControl>

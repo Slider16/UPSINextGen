@@ -1,0 +1,107 @@
+﻿<Window x:Name="MainWindow1" Title="Utilities Main Window"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:uc="clr-namespace:Utilities.wpf.Views"
+        xmlns:rx="uti"
+        mc:Ignorable="d" WindowStyle="None" 
+        x:Class="Utilities.wpf.ViewModels.MainWindow"
+        WindowStartupLocation="Manual" AllowsTransparency="True" 
+        Background="{x:Null}">
+
+    <Window.Resources>
+        <ResourceDictionary Source="/Resources/MainWindowResources.xaml"/>
+    </Window.Resources>
+
+    <Border Width="Auto" Height="Auto" x:Name="windowFrame"
+            Style="{StaticResource MainBorderStyle}"
+            Background="{StaticResource MainBorderBackground}">
+
+        <Grid Name="OuterGrid">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition />
+                <RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <!-- The title bar is populated with the DisplayName property of the 
+                MainWindowViewModel which is populated by the Strings resource file.-->	
+            <TextBlock Name="TitleBar" Text="{Binding DisplayName}" 
+					   Margin="5,1,1,1" Padding="5" 
+					   HorizontalAlignment="Stretch"
+					   MouseLeftButtonDown="titleBar_MouseLeftButtonDown" 
+                       Grid.ColumnSpan="3" />
+            
+            <Menu Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="4" 
+                  KeyboardNavigation.TabNavigation="Cycle">
+                <Menu.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="DeepSkyBlue"  Offset="0.0"/>
+                        <GradientStop Color="AliceBlue" Offset="0.5"/>
+                    </LinearGradientBrush>
+                </Menu.Background>
+                <MenuItem Header="File">
+                    <MenuItem Header="E_xit" Command="{Binding Path=CloseCommand}" />
+                </MenuItem>
+                <MenuItem Header="Edit"></MenuItem>
+                <MenuItem Header="Tools"></MenuItem>
+                <MenuItem Header="Help"></MenuItem>
+            </Menu>
+
+            
+            <Border Grid.Column="0"
+                    Grid.Row="2"
+                    Margin="5"
+                    Width="170"
+                    BorderBrush="CadetBlue" BorderThickness="2">
+                <HeaderedContentControl
+                    Content="{Binding Path=Commands}"
+                    ContentTemplate="{StaticResource CommandsTemplate}"
+                    Header="Select A Workspace"/>
+            </Border>
+            
+            <Border
+                Grid.Column="1"
+                Grid.Row="2"
+                Margin="5"
+                >
+                <HeaderedContentControl
+                    Content="{Binding Path=Workspaces}"
+                    ContentTemplate="{StaticResource WorkspacesTemplate}"
+                    Header="Workspaces"
+                    />
+            </Border>
+  
+            <TextBlock Grid.Row="3" Grid.ColumnSpan="2" Text="Footer" Margin="1,10,1,1" Padding="5"
+				HorizontalAlignment="Center" Background="Red"/>
+ 
+            
+            
+            <!--Right-hand resizing handle-->
+			<Rectangle Grid.RowSpan="3" Grid.Column="1" Width="5"
+					   VerticalAlignment="Stretch" HorizontalAlignment="Right"
+					   Cursor="SizeWE" Fill="Transparent"
+					   MouseLeftButtonDown="window_initiateWiden"
+					   MouseLeftButtonUp="window_endWiden"
+					   MouseMove="window_Widen"></Rectangle>
+            
+            <!--Bottom resizing handle-->
+            <Rectangle Grid.Row="3" Grid.ColumnSpan="2" Height="5"
+                       HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
+                       Cursor="SizeNS" Fill="Transparent"
+                       MouseLeftButtonDown="window_initiateHeighten"
+                       MouseLeftButtonUp="window_endHeighten"
+                       MouseMove="window_Heighten"></Rectangle>
+
+		</Grid>
+
+
+	</Border>
+
+</Window>

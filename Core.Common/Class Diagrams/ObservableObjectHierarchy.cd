@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Core.Common.ViewModelBase">
+    <Position X="2.25" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAACAAAAAAAAAAAQAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ViewModelBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Core.Common.ObservableObject">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ObservableObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Core.Common.ModelBase">
+    <Position X="6.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAEAAAAgAAAAAEAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>ModelBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Core.Common.CommandViewModel">
+    <Position X="0.5" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\CommandViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Core.Common.ViewModels.WorkspaceViewModel">
+    <Position X="4" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAABAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\WorkspaceViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
